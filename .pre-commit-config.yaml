@@ -83,7 +83,6 @@ repos:
       - id: terraform-fmt
       - id: terraform-tfsec
 
-      - id: todocheck
       - id: gitleaks
         args:
           - --path=.
@@ -93,7 +92,7 @@ repos:
         args:
           - --config=.ci/linters/.hadolint.yaml
   - repo: https://github.com/bridgecrewio/checkov.git
-    rev: '2.0.1088'
+    rev: '2.0.1100'
     hooks:
       - id: checkov
         args:
