@@ -11,7 +11,7 @@
 ```hcl
   module "main" {
     source  = "hadenlabs/terraform-aws-iam-system-user/aws"
-    version = "0.0.0"
+    version = "0.1.0"
   }
 ```
 
@@ -55,7 +55,7 @@ data "aws_iam_policy_document" "s3_policy" {
 
 module "s3_user" {
   source  = "hadenlabs/terraform-aws-iam-system-user/aws"
-  version = "0.0.0"
+  version = "0.1.0"
   namespace  = "gitlab"
   stage      = "dev"
   name       = "bot"
@@ -109,7 +109,7 @@ data "aws_iam_policy_document" "s3_policy" {
 
 module "s3_user" {
   source  = "hadenlabs/terraform-aws-iam-system-user/aws"
-  version = "0.0.0"
+  version = "0.1.0"
   namespace  = "gitlab"
   stage      = "dev"
   name       = "bot"
