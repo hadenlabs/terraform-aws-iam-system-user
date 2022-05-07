@@ -4,6 +4,9 @@
   module "main" {
     source  = "hadenlabs/terraform-aws-iam-system-user/aws"
     version = "0.0.0"
+    namespace  = "gitlab"
+    stage      = "dev"
+    name       = "bot"
   }
 ```
 
