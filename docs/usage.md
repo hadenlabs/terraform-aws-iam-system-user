@@ -3,7 +3,7 @@
 ```hcl
   module "main" {
     source  = "hadenlabs/iam-system-user/aws"
-    version = "0.1.0"
+    version = "0.1.1"
     namespace  = "gitlab"
     stage      = "dev"
     name       = "bot"
