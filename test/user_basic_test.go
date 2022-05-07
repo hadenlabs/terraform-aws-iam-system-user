@@ -1,25 +1,18 @@
 package test
 
 import (
-	"fmt"
 	"testing"
 
 	"github.com/gruntwork-io/terratest/modules/terraform"
-
-	"github.com/hadenlabs/terraform-aws-iam-system-user/config"
 	"github.com/stretchr/testify/assert"
-	"github.com/hadenlabs/terraform-aws-iam-system-user/internal/common/log"
+
 	"github.com/hadenlabs/terraform-aws-iam-system-user/internal/app/external/faker"
 	"github.com/hadenlabs/terraform-aws-iam-system-user/internal/testutil"
 )
 
-func Test{{pascalCase testName}}Success(t *testing.T) {
+func TestBasicSuccess(t *testing.T) {
 	t.Parallel()
-	conf := config.Must()
-	logger := log.Factory(*conf)
-	logger.Debugf(
-		"values for test terraform-aws-iam-system-user is",
-	)
+
 	tags := map[string]interface{}{
 		"tag1": "tags1",
 	}
@@ -27,12 +20,10 @@ func Test{{pascalCase testName}}Success(t *testing.T) {
 	stage := testutil.Stage
 	name := faker.Server().Name()
 	enabled := true
-	useFullName := false
-	prefix := "bot"
 
 	terraformOptions := &terraform.Options{
 		// The path to where your Terraform code is located
-        TerraformDir: "user-{{dashCase testName}}",
+		TerraformDir: "user-basic",
 		Upgrade:      true,
 		Vars: map[string]interface{}{
 			"namespace": namespace,
@@ -40,8 +31,6 @@ func Test{{pascalCase testName}}Success(t *testing.T) {
 			"name":      name,
 			"enabled":   enabled,
 			"tags":      tags,
-      "use_fullname": useFullName,
-			"prefix": prefix,
 		},
 	}
 
@@ -52,5 +41,4 @@ func Test{{pascalCase testName}}Success(t *testing.T) {
 	terraform.InitAndApply(t, terraformOptions)
 	outputUserName := terraform.Output(t, terraformOptions, "user_name")
 	assert.NotEmpty(t, outputUserName, outputUserName)
-	assert.Equal(t, fmt.Sprintf("%s-%s", prefix, name),  outputUserName)
 }

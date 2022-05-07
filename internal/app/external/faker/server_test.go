@@ -9,15 +9,12 @@ import (
 )
 
 func TestFakeUserName(t *testing.T) {
-	name := User().Name()
+	name := Server().Name()
 	namePrefix := strings.Split(name, "-")[0]
 	assert.Contains(t, names, namePrefix, namePrefix)
 }
 
-func TestFakeUserFirstName(t *testing.T) {
-	assert.Contains(t, firstNames, User().FirstName())
-}
-
-func TestFakeUserPath(t *testing.T) {
-	assert.Contains(t, paths, User().Path())
+func TestFakeUserNameLower(t *testing.T) {
+	name := Server().Name()
+	assert.Equal(t, strings.ToLower(name), name)
 }

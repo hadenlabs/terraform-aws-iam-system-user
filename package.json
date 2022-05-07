@@ -2,7 +2,7 @@
   "name": "@hadenlabs/terraform-aws-iam-system-user",
   "version": "0.0.0",
   "description": "terraform-aws-iam-system-user",
-  "author": "Luis Mayta <slovacus@gmail.com>",
+  "author": "Luis Mayta <luis@hadenlabs.com>",
   "license": "LGPL-3.0",
   "engines": {
     "node": ">=14"
