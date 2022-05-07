@@ -11,7 +11,7 @@
 ```hcl
   module "main" {
     source  = "hadenlabs/iam-system-user/aws"
-    version = "0.1.0"
+    version = "0.1.1"
   }
 ```
 
@@ -55,7 +55,7 @@ data "aws_iam_policy_document" "s3_policy" {
 
 module "s3_user" {
   source  = "hadenlabs/iam-system-user/aws"
-  version = "0.1.0"
+  version = "0.1.1"
   namespace  = "gitlab"
   stage      = "dev"
   name       = "bot"
@@ -109,7 +109,7 @@ data "aws_iam_policy_document" "s3_policy" {
 
 module "s3_user" {
   source  = "hadenlabs/iam-system-user/aws"
-  version = "0.1.0"
+  version = "0.1.1"
   namespace  = "gitlab"
   stage      = "dev"
   name       = "bot"
