@@ -33,7 +33,7 @@ This is a list of plugins that need to be installed previously to enjoy all the 
 
 ```hcl
   module "main" {
-    source  = "hadenlabs/terraform-aws-iam-system-user/aws"
+    source  = "hadenlabs/iam-system-user/aws"
     version = "0.1.0"
     namespace  = "gitlab"
     stage      = "dev"
@@ -57,7 +57,7 @@ Full working examples can be found in [examples](./examples) folder.
 
 ```hcl
   module "main" {
-    source  = "hadenlabs/terraform-aws-iam-system-user/aws"
+    source  = "hadenlabs/iam-system-user/aws"
     version = "0.1.0"
   }
 ```
@@ -101,7 +101,7 @@ data "aws_iam_policy_document" "s3_policy" {
 }
 
 module "s3_user" {
-  source  = "hadenlabs/terraform-aws-iam-system-user/aws"
+  source  = "hadenlabs/iam-system-user/aws"
   version = "0.1.0"
   namespace  = "gitlab"
   stage      = "dev"
@@ -155,7 +155,7 @@ data "aws_iam_policy_document" "s3_policy" {
 }
 
 module "s3_user" {
-  source  = "hadenlabs/terraform-aws-iam-system-user/aws"
+  source  = "hadenlabs/iam-system-user/aws"
   version = "0.1.0"
   namespace  = "gitlab"
   stage      = "dev"
