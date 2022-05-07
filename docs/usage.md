@@ -2,7 +2,7 @@
 
 ```hcl
   module "main" {
-    source  = "hadenlabs/terraform-aws-iam-system-user/aws"
+    source  = "hadenlabs/iam-system-user/aws"
     version = "0.1.0"
     namespace  = "gitlab"
     stage      = "dev"
