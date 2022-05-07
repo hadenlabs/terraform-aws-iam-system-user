@@ -1,6 +1,7 @@
 package test
 
 import (
+	"fmt"
 	"testing"
 
 	"github.com/gruntwork-io/terratest/modules/terraform"
@@ -8,6 +9,8 @@ import (
 	"github.com/hadenlabs/terraform-aws-iam-system-user/config"
 	"github.com/stretchr/testify/assert"
 	"github.com/hadenlabs/terraform-aws-iam-system-user/internal/common/log"
+	"github.com/hadenlabs/terraform-aws-iam-system-user/internal/app/external/faker"
+	"github.com/hadenlabs/terraform-aws-iam-system-user/internal/testutil"
 )
 
 func Test{{pascalCase testName}}Success(t *testing.T) {
@@ -17,12 +20,28 @@ func Test{{pascalCase testName}}Success(t *testing.T) {
 	logger.Debugf(
 		"values for test terraform-aws-iam-system-user is",
 	)
+	tags := map[string]interface{}{
+		"tag1": "tags1",
+	}
+	namespace := testutil.Company
+	stage := testutil.Stage
+	name := faker.Server().Name()
+	enabled := true
+	useFullName := false
+	prefix := "bot"
 
 	terraformOptions := &terraform.Options{
 		// The path to where your Terraform code is located
-        TerraformDir: "replace-name-{{dashCase testName}}",
+        TerraformDir: "user-{{dashCase testName}}",
 		Upgrade:      true,
 		Vars: map[string]interface{}{
+			"namespace": namespace,
+			"stage":     stage,
+			"name":      name,
+			"enabled":   enabled,
+			"tags":      tags,
+      "use_fullname": useFullName,
+			"prefix": prefix,
 		},
 	}
 
@@ -31,6 +50,7 @@ func Test{{pascalCase testName}}Success(t *testing.T) {
 
 	// This will run `terraform init` and `terraform apply` and fail the test if there are any errors
 	terraform.InitAndApply(t, terraformOptions)
-	outputID := terraform.Output(t, terraformOptions, "id")
-	assert.NotEmpty(t, outputID, outputID)
+	outputUserName := terraform.Output(t, terraformOptions, "user_name")
+	assert.NotEmpty(t, outputUserName, outputUserName)
+	assert.Equal(t, fmt.Sprintf("%s-%s", prefix, name),  outputUserName)
 }

@@ -12,7 +12,7 @@ tags:
   - aws
   - terraform
   - iam
-  - system
+  - role
 
 # Categories of this project
 categories:
@@ -20,7 +20,7 @@ categories:
   - terraform-modules/iam
 
 email:
-  support: support@hadenlabs.com
+  support: lmayta@infosis.pe
 
 # Logo for this project
 #logo: docs/logo.png
